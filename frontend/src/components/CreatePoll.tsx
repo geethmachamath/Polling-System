@@ -66,7 +66,7 @@ const CreatePoll: React.FC<CreatePollProps> = ({ onPollCreated }) => {
     setError('');
     setSuccess(false);
 
-    // Validation
+    
     if (!formData.question.trim()) {
       setError('Question is required');
       return;
@@ -102,14 +102,14 @@ const CreatePoll: React.FC<CreatePollProps> = ({ onPollCreated }) => {
       
       setSuccess(true);
       
-      // Reset form
+  
       setFormData({
         question: '',
         options: ['', ''],
         expiresAt: format(addDays(new Date(), 7), "yyyy-MM-dd'T'HH:mm"),
       });
 
-      // Redirect to active polls after a moment
+    
       setTimeout(() => {
         onPollCreated();
       }, 2000);
@@ -152,7 +152,7 @@ const CreatePoll: React.FC<CreatePollProps> = ({ onPollCreated }) => {
   return (
     <div className="max-w-4xl mx-auto animate-fade-in">
       <Card className="border-2 border-gray-200 shadow-lg bg-gradient-to-br from-slate-50 to-white">
-        {/* Header */}
+        
         <CardHeader className="pb-6 bg-gradient-to-r from-emerald-50 to-blue-50">
           <div className="flex items-center gap-4">
             <div className="p-3 text-white rounded-2xl bg-gradient-to-r from-emerald-600 to-blue-600">
@@ -167,7 +167,7 @@ const CreatePoll: React.FC<CreatePollProps> = ({ onPollCreated }) => {
 
         <CardContent className="p-8">
           <form onSubmit={handleSubmit} className="space-y-8">
-            {/* Question Section */}
+            
             <div className="space-y-4">
               <div className="flex items-center gap-3 mb-4">
                 <div className="p-2 text-blue-600 bg-blue-100 rounded-lg">
@@ -196,7 +196,7 @@ const CreatePoll: React.FC<CreatePollProps> = ({ onPollCreated }) => {
               </div>
             </div>
 
-            {/* Options Section */}
+            
             <div className="space-y-4">
               <div className="flex items-center gap-3 mb-4">
                 <div className="p-2 text-purple-600 bg-purple-100 rounded-lg">
@@ -218,12 +218,12 @@ const CreatePoll: React.FC<CreatePollProps> = ({ onPollCreated }) => {
                     key={index} 
                     className="flex items-center gap-3 p-4 transition-all duration-300 border-2 border-gray-200 rounded-xl bg-gradient-to-r from-gray-50 to-slate-50 hover:border-gray-300"
                   >
-                    {/* Option Number */}
+               
                     <div className="flex items-center justify-center w-8 h-8 text-sm font-bold text-white rounded-full bg-gradient-to-r from-gray-600 to-slate-600">
                       {String.fromCharCode(65 + index)}
                     </div>
 
-                    {/* Option Input */}
+                    
                     <Input
                       placeholder={`Option ${index + 1} (e.g., React, Vue, Angular)`}
                       value={option}
@@ -232,7 +232,7 @@ const CreatePoll: React.FC<CreatePollProps> = ({ onPollCreated }) => {
                       className="flex-1 transition-all duration-300 border-0 bg-white/80 focus:bg-white focus:ring-2 focus:ring-blue-200"
                     />
 
-                    {/* Remove Button */}
+                    
                     {formData.options.length > 2 && (
                       <Button
                         type="button"
@@ -248,7 +248,7 @@ const CreatePoll: React.FC<CreatePollProps> = ({ onPollCreated }) => {
                 ))}
               </div>
               
-              {/* Add Option Button */}
+           
               {formData.options.length < 5 && (
                 <Button
                   type="button"
@@ -262,7 +262,7 @@ const CreatePoll: React.FC<CreatePollProps> = ({ onPollCreated }) => {
               )}
             </div>
 
-            {/* Expiry Section */}
+          
             <div className="space-y-4">
               <div className="flex items-center gap-3 mb-4">
                 <div className="p-2 text-orange-600 bg-orange-100 rounded-lg">
@@ -290,7 +290,7 @@ const CreatePoll: React.FC<CreatePollProps> = ({ onPollCreated }) => {
               </div>
             </div>
 
-            {/* Error Message */}
+            
             {error && (
               <div className="flex items-center gap-3 p-4 border-2 border-red-200 rounded-xl bg-red-50 animate-fade-in">
                 <AlertCircle size={20} className="text-red-500" />
@@ -298,7 +298,6 @@ const CreatePoll: React.FC<CreatePollProps> = ({ onPollCreated }) => {
               </div>
             )}
 
-            {/* Submit Button */}
             <div className="pt-6 border-t">
               <Button 
                 type="submit" 
@@ -324,7 +323,7 @@ const CreatePoll: React.FC<CreatePollProps> = ({ onPollCreated }) => {
                 )}
               </Button>
               
-              {/* Form Progress Indicator */}
+           
               <div className="mt-4 text-center">
                 <div className="flex items-center justify-center gap-2 text-sm text-gray-500">
                   <div className={`w-2 h-2 rounded-full ${formData.question.trim() ? 'bg-green-500' : 'bg-gray-300'}`}></div>
@@ -342,7 +341,7 @@ const CreatePoll: React.FC<CreatePollProps> = ({ onPollCreated }) => {
         </CardContent>
       </Card>
 
-      {/* Background Decoration */}
+    
       <div className="fixed inset-0 overflow-hidden pointer-events-none -z-10">
         <div className="absolute right-0 w-64 h-64 transform translate-x-32 rounded-full top-1/4 bg-gradient-to-br from-emerald-100/20 to-blue-100/20"></div>
         <div className="absolute left-0 w-64 h-64 transform -translate-x-32 rounded-full bottom-1/4 bg-gradient-to-tr from-blue-100/20 to-purple-100/20"></div>

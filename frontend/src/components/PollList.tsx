@@ -125,7 +125,7 @@ const PollList: React.FC<PollListProps> = ({ type, refreshTrigger }) => {
 
   return (
     <div className="space-y-4">
-      {/* Header */}
+    
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
           <div className={`p-2 rounded-lg ${type === 'active' ? 'bg-blue-100 text-blue-600' : 'bg-green-100 text-green-600'}`}>
@@ -149,7 +149,7 @@ const PollList: React.FC<PollListProps> = ({ type, refreshTrigger }) => {
         )}
       </div>
 
-      {/* Polls Grid */}
+      
       <div className="grid gap-4">
         {polls.map((poll, index) => {
           const isExpanded = expandedPolls.has(poll.id);
@@ -167,7 +167,7 @@ const PollList: React.FC<PollListProps> = ({ type, refreshTrigger }) => {
               `}
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              {/* Minimized Header */}
+              
               <div 
                 className="p-4 cursor-pointer"
                 onClick={() => toggleExpanded(poll.id)}
@@ -227,7 +227,7 @@ const PollList: React.FC<PollListProps> = ({ type, refreshTrigger }) => {
                       </Button>
                     )}
 
-                    {/* Expand/Collapse Icon */}
+                   
                     <div className="text-gray-400">
                       {isExpanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
                     </div>
@@ -235,7 +235,7 @@ const PollList: React.FC<PollListProps> = ({ type, refreshTrigger }) => {
                 </div>
               </div>
 
-              {/* Expanded Content */}
+             
               {isExpanded && (
                 <CardContent className="px-4 pt-0 pb-6 animate-slide-up">
                   <div className="pt-4 border-t">

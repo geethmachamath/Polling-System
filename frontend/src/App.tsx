@@ -74,7 +74,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100">
-      {/* Hero Header */}
+    
       <div className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600/5 to-purple-600/5"></div>
         <div className="relative max-w-6xl px-6 py-12 mx-auto">
@@ -83,7 +83,7 @@ function App() {
               <div className="p-3 text-white shadow-lg rounded-2xl bg-gradient-to-r from-blue-600 to-purple-600">
                 <Activity size={32} />
               </div>
-              <h1 className="text-4xl font-bold text-transparent bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text">
+              <h1 className="text-4xl font-bold leading-relaxed text-transparent bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text">
                 Polling System
               </h1>
             </div>
@@ -92,7 +92,7 @@ function App() {
             </p>
           </div>
 
-          {/* Navigation Tabs */}
+        
           <div className="flex flex-wrap justify-center gap-3 mb-8">
             {tabs.map((tab, index) => {
               const Icon = tab.icon;
@@ -177,7 +177,8 @@ function App() {
         <div className="absolute bottom-0 left-0 transform -translate-x-48 translate-y-48 rounded-full w-96 h-96 bg-gradient-to-tr from-emerald-100/20 to-blue-100/20"></div>
       </div>
 
-      <style jsx>{`
+      <style jsx>
+        {`
         @keyframes fadeIn {
           from { opacity: 0; transform: translateY(20px); }
           to { opacity: 1; transform: translateY(0); }

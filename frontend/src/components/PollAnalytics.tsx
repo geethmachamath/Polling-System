@@ -35,7 +35,7 @@ const PollAnalytics: React.FC<PollAnalyticsProps> = ({ refreshTrigger }) => {
   const [autoRefresh, setAutoRefresh] = useState(true);
   const [selectedPeriod, setSelectedPeriod] = useState<'7d' | '30d' | 'all'>('7d');
 
-  // Real-time metrics state
+  
   const [metrics, setMetrics] = useState({
     totalPolls: 0,
     totalVotes: 0,
@@ -56,7 +56,7 @@ const PollAnalytics: React.FC<PollAnalyticsProps> = ({ refreshTrigger }) => {
       const combined = [...activePolls, ...closedPolls];
       setAllPolls(combined);
       
-      // Calculate metrics
+      
       const totalVotes = combined.reduce((sum, poll) => sum + (poll._count?.votes || 0), 0);
       const avgParticipation = combined.length > 0 ? totalVotes / combined.length : 0;
       const topPoll = combined.reduce((prev, current) => 
@@ -64,7 +64,7 @@ const PollAnalytics: React.FC<PollAnalyticsProps> = ({ refreshTrigger }) => {
         combined[0]
       );
 
-      // Simulate recent activity data
+    
       const recentActivity = combined.slice(0, 5).map((poll, index) => ({
         time: format(subDays(new Date(), index), 'MMM dd, HH:mm'),
         votes: poll._count?.votes || 0,
@@ -93,7 +93,7 @@ const PollAnalytics: React.FC<PollAnalyticsProps> = ({ refreshTrigger }) => {
     fetchAllData();
   }, [refreshTrigger]);
 
-  // Auto-refresh every 30 seconds
+  
   useEffect(() => {
     if (!autoRefresh) return;
     
@@ -104,7 +104,7 @@ const PollAnalytics: React.FC<PollAnalyticsProps> = ({ refreshTrigger }) => {
     return () => clearInterval(interval);
   }, [autoRefresh]);
 
-  // Prepare chart data
+
   const getFilteredPolls = () => {
     const now = new Date();
     const cutoff = selectedPeriod === '7d' ? subDays(now, 7) : 
@@ -143,17 +143,17 @@ const PollAnalytics: React.FC<PollAnalyticsProps> = ({ refreshTrigger }) => {
     options: poll.options.length
   }));
 
-  // CSV Export Function
+  
   const exportToCSV = () => {
     const csvData = [];
     
-    // Headers
+    
     csvData.push(['Poll Analytics Report', '', '', '']);
     csvData.push(['Generated on', format(new Date(), 'yyyy-MM-dd HH:mm:ss'), '', '']);
     csvData.push(['Period', selectedPeriod === '7d' ? '7 Days' : selectedPeriod === '30d' ? '30 Days' : 'All Time', '', '']);
     csvData.push(['', '', '', '']);
 
-    // Summary metrics
+    
     csvData.push(['SUMMARY METRICS', '', '', '']);
     csvData.push(['Total Polls', metrics.totalPolls, '', '']);
     csvData.push(['Total Votes', metrics.totalVotes, '', '']);
@@ -161,7 +161,7 @@ const PollAnalytics: React.FC<PollAnalyticsProps> = ({ refreshTrigger }) => {
     csvData.push(['Average Participation', metrics.avgParticipation, '', '']);
     csvData.push(['', '', '', '']);
 
-    // Poll details
+   
     csvData.push(['POLL DETAILS', '', '', '']);
     csvData.push(['Poll ID', 'Question', 'Total Votes', 'Status']);
     
@@ -176,7 +176,7 @@ const PollAnalytics: React.FC<PollAnalyticsProps> = ({ refreshTrigger }) => {
 
     csvData.push(['', '', '', '']);
     
-    // Options breakdown
+    
     csvData.push(['DETAILED VOTE BREAKDOWN', '', '', '']);
     csvData.push(['Poll Question', 'Option Text', 'Votes', 'Poll ID']);
     
@@ -191,12 +191,12 @@ const PollAnalytics: React.FC<PollAnalyticsProps> = ({ refreshTrigger }) => {
       });
     });
 
-    // Convert to CSV string
+    
     const csvContent = csvData.map(row => 
       row.map(cell => `"${cell}"`).join(',')
     ).join('\n');
 
-    // Download
+  
     const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
@@ -204,10 +204,10 @@ const PollAnalytics: React.FC<PollAnalyticsProps> = ({ refreshTrigger }) => {
     link.click();
   };
 
-  // PDF Export Function
+ 
   const generatePDF = async () => {
     try {
-      // Create a new window for PDF generation
+     
       const printWindow = window.open('', '_blank');
       if (!printWindow) return;
 
@@ -469,7 +469,7 @@ const PollAnalytics: React.FC<PollAnalyticsProps> = ({ refreshTrigger }) => {
       printWindow.document.write(htmlContent);
       printWindow.document.close();
 
-      // Wait for content to load then print
+      
       setTimeout(() => {
         printWindow.print();
       }, 1000);
@@ -483,7 +483,7 @@ const PollAnalytics: React.FC<PollAnalyticsProps> = ({ refreshTrigger }) => {
   if (loading) {
     return (
       <div className="space-y-6">
-        {/* Loading skeleton */}
+      
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
           {[...Array(4)].map((_, i) => (
             <Card key={i} className="animate-pulse">
@@ -519,7 +519,7 @@ const PollAnalytics: React.FC<PollAnalyticsProps> = ({ refreshTrigger }) => {
 
   return (
     <div className="space-y-8">
-      {/* Header with Controls */}
+    
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div>
           <h2 className="mb-2 text-3xl font-bold text-gray-800">Analytics Dashboard</h2>
@@ -536,7 +536,7 @@ const PollAnalytics: React.FC<PollAnalyticsProps> = ({ refreshTrigger }) => {
         </div>
 
         <div className="flex items-center gap-3">
-          {/* Period Filter */}
+        
           <div className="flex items-center gap-1 p-1 bg-gray-100 rounded-lg">
             {[
               { id: '7d', label: '7 Days' },
@@ -559,7 +559,7 @@ const PollAnalytics: React.FC<PollAnalyticsProps> = ({ refreshTrigger }) => {
             ))}
           </div>
 
-          {/* Controls */}
+          
           <Button
             variant="outline"
             size="sm"
@@ -581,7 +581,7 @@ const PollAnalytics: React.FC<PollAnalyticsProps> = ({ refreshTrigger }) => {
         </div>
       </div>
 
-      {/* Key Metrics Grid */}
+     
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
         <Card className="relative overflow-hidden text-white border-0 shadow-lg bg-gradient-to-br from-blue-500 to-blue-600">
           <CardContent className="p-6">
@@ -644,9 +644,9 @@ const PollAnalytics: React.FC<PollAnalyticsProps> = ({ refreshTrigger }) => {
         </Card>
       </div>
 
-      {/* Charts Section */}
+      
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-        {/* Polls Over Time */}
+        
         <Card className="border-0 shadow-lg">
           <CardHeader className="pb-4">
             <div className="flex items-center gap-3">
@@ -711,7 +711,7 @@ const PollAnalytics: React.FC<PollAnalyticsProps> = ({ refreshTrigger }) => {
           </CardContent>
         </Card>
 
-        {/* Top Performing Polls */}
+        
         <Card className="border-0 shadow-lg">
           <CardHeader className="pb-4">
             <div className="flex items-center gap-3">
@@ -754,7 +754,7 @@ const PollAnalytics: React.FC<PollAnalyticsProps> = ({ refreshTrigger }) => {
         </Card>
       </div>
 
-      {/* Participation Analysis */}
+   
       <Card className="border-0 shadow-lg">
         <CardHeader className="pb-4">
           <div className="flex items-center justify-between">
@@ -809,7 +809,7 @@ const PollAnalytics: React.FC<PollAnalyticsProps> = ({ refreshTrigger }) => {
         </CardContent>
       </Card>
 
-      {/* Real-time Activity Feed */}
+      
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
         <Card className="border-0 shadow-lg lg:col-span-2">
           <CardHeader className="pb-4">
@@ -857,7 +857,7 @@ const PollAnalytics: React.FC<PollAnalyticsProps> = ({ refreshTrigger }) => {
           </CardContent>
         </Card>
 
-        {/* Quick Stats */}
+        
         <Card className="border-0 shadow-lg">
           <CardHeader className="pb-4">
             <div className="flex items-center gap-3">
@@ -869,7 +869,7 @@ const PollAnalytics: React.FC<PollAnalyticsProps> = ({ refreshTrigger }) => {
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              {/* Most Engaging Poll */}
+             
               {metrics.topPerformingPoll && (
                 <div className="p-4 border border-blue-200 rounded-xl bg-gradient-to-r from-blue-50 to-indigo-50">
                   <div className="flex items-center gap-2 mb-2">
@@ -888,7 +888,7 @@ const PollAnalytics: React.FC<PollAnalyticsProps> = ({ refreshTrigger }) => {
                 </div>
               )}
 
-              {/* Engagement Rate */}
+              
               <div className="p-4 border rounded-xl bg-gradient-to-r from-emerald-50 to-green-50 border-emerald-200">
                 <div className="flex items-center gap-2 mb-2">
                   <Percent size={16} className="text-emerald-600" />
@@ -900,7 +900,7 @@ const PollAnalytics: React.FC<PollAnalyticsProps> = ({ refreshTrigger }) => {
                 <p className="text-xs text-gray-600">votes per poll</p>
               </div>
 
-              {/* Response Time */}
+
               <div className="p-4 border border-purple-200 rounded-xl bg-gradient-to-r from-purple-50 to-violet-50">
                 <div className="flex items-center gap-2 mb-2">
                   <Clock size={16} className="text-purple-600" />
@@ -918,7 +918,7 @@ const PollAnalytics: React.FC<PollAnalyticsProps> = ({ refreshTrigger }) => {
         </Card>
       </div>
 
-      {/* Real-time Updates Section */}
+   
       <Card className="border-0 shadow-lg bg-gradient-to-r from-slate-50 to-gray-50">
         <CardHeader className="pb-4">
           <div className="flex items-center justify-between">
@@ -970,7 +970,7 @@ const PollAnalytics: React.FC<PollAnalyticsProps> = ({ refreshTrigger }) => {
         </CardContent>
       </Card>
 
-      {/* Export Options */}
+      
       <Card className="border-0 shadow-lg">
         <CardHeader className="pb-4">
           <div className="flex items-center gap-3">

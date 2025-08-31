@@ -46,7 +46,7 @@ const VotingForm: React.FC<VotingFormProps> = ({ poll, onVoteSuccess, onCancel }
 
   return (
     <div className="relative overflow-hidden border-2 border-gray-200 rounded-2xl bg-gradient-to-br from-slate-50 to-white">
-      {/* Header */}
+     
       <div className="flex items-center justify-between p-6 border-b bg-gradient-to-r from-blue-50 to-purple-50">
         <div className="flex items-center gap-3">
           <div className="p-2 text-white rounded-xl bg-gradient-to-r from-blue-600 to-purple-600">
@@ -65,7 +65,7 @@ const VotingForm: React.FC<VotingFormProps> = ({ poll, onVoteSuccess, onCancel }
       </div>
 
       <form onSubmit={handleSubmit} className="p-6 space-y-6">
-        {/* Options */}
+       
         <div className="space-y-3">
           {poll.options.map((option, idx) => {
             const isSelected = selectedOption === option.id;
@@ -92,7 +92,7 @@ const VotingForm: React.FC<VotingFormProps> = ({ poll, onVoteSuccess, onCancel }
                     group-hover:scale-[1.01]
                   `}
                 >
-                  {/* Custom Radio Button */}
+                 
                   <div className={`
                     flex items-center justify-center w-6 h-6 rounded-full border-2 transition-all duration-300
                     ${isSelected 
@@ -105,7 +105,7 @@ const VotingForm: React.FC<VotingFormProps> = ({ poll, onVoteSuccess, onCancel }
                     )}
                   </div>
 
-                  {/* Option Label */}
+                 
                   <div className="flex items-center flex-1 gap-3">
                     <div className={`
                       flex items-center justify-center w-8 h-8 text-sm font-bold rounded-full transition-all duration-300
@@ -124,7 +124,7 @@ const VotingForm: React.FC<VotingFormProps> = ({ poll, onVoteSuccess, onCancel }
                     </span>
                   </div>
 
-                  {/* Selection indicator */}
+                 
                   {isSelected && (
                     <div className="absolute top-2 right-2">
                       <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
@@ -136,7 +136,7 @@ const VotingForm: React.FC<VotingFormProps> = ({ poll, onVoteSuccess, onCancel }
           })}
         </div>
 
-        {/* Error Message */}
+        
         {error && (
           <div className="flex items-center gap-3 p-4 border border-red-200 rounded-xl bg-red-50 animate-fade-in">
             <AlertCircle size={20} className="text-red-500" />
@@ -144,7 +144,7 @@ const VotingForm: React.FC<VotingFormProps> = ({ poll, onVoteSuccess, onCancel }
           </div>
         )}
 
-        {/* Action Buttons */}
+        
         <div className="flex flex-col gap-3 pt-4 border-t sm:flex-row">
           <Button 
             type="submit" 

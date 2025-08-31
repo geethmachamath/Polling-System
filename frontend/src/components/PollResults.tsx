@@ -37,7 +37,7 @@ const PollResults: React.FC<PollResultsProps> = ({ pollId }) => {
     return <div className="py-4 text-red-600">{error}</div>;
   }
 
-  // Prepare data for the chart
+  
   const chartData = poll.options.map((option, index) => ({
     name: `Option ${index + 1}`,
     label: option.text.length > 20 ? option.text.substring(0, 20) + '...' : option.text,
@@ -52,7 +52,7 @@ const PollResults: React.FC<PollResultsProps> = ({ pollId }) => {
         <p className="text-sm text-gray-600">Total Votes: {poll.totalVotes || 0}</p>
       </div>
 
-      {/* Results List */}
+     
       <div className="space-y-2">
         {poll.options.map((option, index) => (
           <div key={option.id} className="p-3 border rounded bg-gray-50">
@@ -63,7 +63,7 @@ const PollResults: React.FC<PollResultsProps> = ({ pollId }) => {
               </span>
             </div>
             
-            {/* Progress Bar */}
+            
             <div className="w-full h-2 bg-gray-200 rounded-full">
               <div
                 className="h-2 transition-all duration-300 bg-blue-800 rounded-full"
@@ -74,41 +74,7 @@ const PollResults: React.FC<PollResultsProps> = ({ pollId }) => {
         ))}
       </div>
 
-      {/* Chart Visualization */}
-      {/* {poll.totalVotes && poll.totalVotes > 0 && (
-        <div className="mt-6">
-          <h5 className="mb-2 font-medium">Vote Distribution</h5>
-          <div className="h-64">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart
-                data={chartData}
-                margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-              >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis 
-                  dataKey="name" 
-                  tick={{ fontSize: 12 }}
-                />
-                <YAxis />
-                <Tooltip 
-                  formatter={(value, name, props) => [
-                    `${value} votes (${props.payload.percentage}%)`,
-                    props.payload.label
-                  ]}
-                  labelFormatter={() => ''}
-                />
-                <Bar dataKey="votes" fill="#2563eb" />
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
-        </div>
-      )}
-
-      {poll.totalVotes === 0 && (
-        <div className="py-4 text-center text-gray-600">
-          No votes yet on this poll.
-        </div>
-      )} */}
+     
     </div>
   );
 };
