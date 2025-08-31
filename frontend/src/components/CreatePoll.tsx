@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -347,29 +347,7 @@ const CreatePoll: React.FC<CreatePollProps> = ({ onPollCreated }) => {
         <div className="absolute left-0 w-64 h-64 transform -translate-x-32 rounded-full bottom-1/4 bg-gradient-to-tr from-blue-100/20 to-purple-100/20"></div>
       </div>
 
-      <style jsx>{`
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-
-        .animate-fade-in {
-          animation: fadeIn 0.6s ease-out;
-        }
-
-        /* Custom focus styles */
-        input:focus-visible,
-        textarea:focus-visible {
-          outline: none;
-        }
-
-        /* Smooth transitions */
-        * {
-          transition-property: color, background-color, border-color, box-shadow, transform;
-          transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-          transition-duration: 300ms;
-        }
-      `}</style>
+      
     </div>
   );
 };

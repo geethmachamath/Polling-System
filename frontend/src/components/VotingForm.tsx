@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { pollsApi } from '../services/api';
@@ -183,16 +183,7 @@ const VotingForm: React.FC<VotingFormProps> = ({ poll, onVoteSuccess, onCancel }
         </div>
       </form>
 
-      <style jsx>{`
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(10px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-
-        .animate-fade-in {
-          animation: fadeIn 0.3s ease-out;
-        }
-      `}</style>
+      
     </div>
   );
 };

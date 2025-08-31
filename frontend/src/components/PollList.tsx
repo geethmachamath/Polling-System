@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -246,7 +246,8 @@ const PollList: React.FC<PollListProps> = ({ type, refreshTrigger }) => {
                         onCancel={() => setSelectedPoll(null)}
                       />
                     ) : userHasVoted || type === 'closed' ? (
-                      <PollResults pollId={poll.id} showChart={true} />
+                      <PollResults pollId={poll.id} />
+
                     ) : (
                       // Show poll details and vote button for active polls not yet voted
                       <div className="space-y-4">
