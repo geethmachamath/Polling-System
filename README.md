@@ -31,5 +31,5 @@ Before setting up the project, ensure you have installed:
 
 ### 1️⃣ Clone the repository
 ```bash
-git clone https://github.com/your-username/pollsphere.git
+git clone https://github.com/geethmachamath/Polling-System.git
 cd pollsphere
