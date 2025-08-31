@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import PollList from './components/PollList';
@@ -177,33 +177,7 @@ function App() {
         <div className="absolute bottom-0 left-0 transform -translate-x-48 translate-y-48 rounded-full w-96 h-96 bg-gradient-to-tr from-emerald-100/20 to-blue-100/20"></div>
       </div>
 
-      <style jsx>
-        {`
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-
-        .animate-fade-in {
-          animation: fadeIn 0.6s ease-out;
-        }
-
-        /* Custom tab hover effects */
-        .group:hover .group-hover\\:scale-105 {
-          transform: scale(1.05);
-        }
-
-        /* Smooth transitions for all interactive elements */
-        * {
-          scroll-behavior: smooth;
-        }
-
-        /* Custom focus styles */
-        button:focus-visible {
-          outline: 2px solid #3B82F6;
-          outline-offset: 2px;
-        }
-      `}</style>
+     
     </div>
   );
 }
